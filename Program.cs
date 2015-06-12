@@ -6,11 +6,46 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            var games = new Games();
+
+            while (true)
+            {
+                switch (ShowMenu())
+                {
+                    case "L":
+
+                        
+                        ListGames(games);
+                        break;
+                    case "Q":
+                        return;
+                }
+            }
 
         }
+
+        private static void ListGames(Games games)
+        {
+            foreach (var product in games.AllProducts())
+            {
+                Console.WriteLine(product);
+            }
+        }
+
+        public static string ShowMenu()
+        {
+            Console.WriteLine("Menu:");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.WriteLine("L) List Games");
+            Console.WriteLine("Q) Quit Game");
+
+           return Console.ReadLine().Trim().ToUpper();
+        }
+
+      
     }
 }
